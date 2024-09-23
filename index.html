@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/style.css">
+    <!--<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" /> -->
+    
+    
+    <title>Joc</title>
+</head>
+<body>
+
+
+
+    <header>
+        <h1>Busca un número entre 1 i 20</h1>
+        <button id="reiniciar" onclick="restart()">Reinicia!</button>
+    </header>
+
+
+
+    <main id="main">
+        <h2>Busca el número!</h1>
+        <div id= "icona" class="icona">?</div>
+        <p id="track">Comencem la partida...</p>
+    </main>
+
+
+
+    <footer>
+        <div>
+            <input id="num" type="number">
+            <button class="btry" onclick="jugada()">Prova!</button>
+        </div>
+        <div class="stat">
+            <p> 
+                Jugades: <span id="njugades">20</span></p>
+            <p> <!--<span class="material-symbols-outlined">workspace_premium</span>--> Total punts: 0</p>
+        </div>
+    </footer>
+
+
+
+    <script src="js/index.js"></script>
+
+
+
+</body>
+</html>

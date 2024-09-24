@@ -3,6 +3,7 @@ const MAX_JUGADES = 20;
 let numJugades = MAX_JUGADES;
 let numSecret =  Math.floor(Math.random() * 20) + 1;
 console.log(numSecret);
+let puntsAnteriors = 0;
 
 
 //Variables indentificatius DOM
@@ -11,6 +12,8 @@ let tracker = document.getElementById("track"); //estat partida
 let inputNum = document.getElementById("num"); //casella del número
 let njugades = document.getElementById("njugades"); // total jugades
 let icona = document.getElementById("icona");
+let reiniciar =  document.getElementById("reiniciar");
+let punts = document.getElementById("punts");
 
 
 //FUNCIONS 
@@ -21,6 +24,9 @@ function hasGuanyat(){
     document.body.style.backgroundColor = 'green';
     inputNum.style.backgroundColor = 'green';
     icona.textContent = numSecret; //mostra el número en el front
+    activarButtonReiniciar();
+    
+    millorPartida(); 
     
 }
 
@@ -29,7 +35,24 @@ function finalPartida(){
     document.body.style.backgroundColor = 'red';
     inputNum.style.backgroundColor = 'red';
     icona.textContent = numSecret; //mostra el número en el front
-    
+    activarButtonReiniciar();
+}
+
+
+function desactivarButtonReiniciar(){
+    reiniciar.disabled = true;
+}
+
+function activarButtonReiniciar(){
+    reiniciar.disabled = false;
+}
+
+function millorPartida(){
+    if (puntsAnteriors < numJugades){
+    puntsAnteriors = numJugades;
+    punts.textContent = puntsAnteriors;
+
+    }
 }
 
 
@@ -53,6 +76,10 @@ function restart(){
     console.log('reiniciar partida');
     num.value= "";
 
+    //desactivar botó
+    desactivarButtonReiniciar();
+
+
 }
 
 
@@ -66,15 +93,17 @@ function jugada(){
 
 
     if(currentNum){
-
+        
         if (numSecret == currentNum){
             hasGuanyat();
+            
 
         } else {
             numJugades--;
-            if (numJugades == 0){
-                njugades.textContent = numJugades;
+            if (numJugades <= 0){ //evitar que en jugades salga negativo
+                njugades.textContent = 0; //una vez llegada a 0 jugades, siempre pondrá 0
                 finalPartida();
+                
             }else if (currentNum > numSecret){
                 tracker.textContent = 'El número és massa gran..';
                 njugades.textContent = numJugades;

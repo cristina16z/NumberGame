@@ -56,6 +56,7 @@ function millorPartida(){
 }
 
 
+
 //Botó REINICIA 
 function restart(){
     
@@ -81,6 +82,7 @@ function restart(){
 
 
 }
+
 
 
 //BOTÓ PROVA
